@@ -2,26 +2,65 @@
 
 namespace HealthModuleMod
 {
-    [HarmonyPatch(typeof(Survival))]//Surivial
-    [HarmonyPatch("Reset")]
-    class AddMaxhealth
+
+
+
+
+
+
+
+
+
+
+    [HarmonyPatch(typeof(Player))]//Surivial
+    [HarmonyPatch("EquipmentChanged")]
+    class CheckIfChipEquipped
     {
-        public static bool Prefix(Survival __instance)
+        public static int EquippedHealthModulesAmount = 0;
+
+        public static bool Prefix(Player __instance)
         {
             //Equipment equipment = __instance.;
-            float extrahealth = 0f;
-            bool healthchipEquipped = true;//__instance.GetComponent("healthchip");
-            if (healthchipEquipped)
+            //float extrahealth = 0f;
+            // return Inventory.main.equipment.GetTechTypeInSlot("Chip") == FlatHealthModule;
+
+            Inventory inventory = Inventory.main;
+
+            //if (inventory == null || inventory.equipment == null)
+            //    return true;
+
+            var newAmount = inventory.equipment.GetCount(AddHealthModule.FlatHealthModule);
+
+            if (newAmount > EquippedHealthModulesAmount)
             {
-                extrahealth = 50f;
+                IncreasePlayerHealth(__instance, (1+newAmount) * 100f);
+                EquippedHealthModulesAmount = newAmount;
             }
-            __instance.GetComponent<Player>().liveMixin.data.maxHealth = 100f + extrahealth;
-            //__instance.GetComponent<Player>().liveMixin.health = 100F * 0f;
+            else if (newAmount < EquippedHealthModulesAmount)
+            {
+                DecreasePlayerHealth(__instance, (1+newAmount) * 100f);
+                EquippedHealthModulesAmount = newAmount;
+            }
 
-            __instance.food = 100f;
-            __instance.water = 100f;
+            //bool healthchipEquipped = true;//__instance.GetComponent("healthchip");
 
-            return false;
+            //__instance.food = HCPSettings.Instance.FoodStart;
+            //__instance.water = HCPSettings.Instance.WaterStart;
+
+            return true;
         }
+
+        public static void IncreasePlayerHealth(Player player, float amount)
+        {
+            player.liveMixin.data.maxHealth = amount;
+            player.liveMixin.health += 100; 
+        }
+
+        public static void DecreasePlayerHealth(Player player, float amount)
+        {
+            player.liveMixin.data.maxHealth = amount;
+            player.liveMixin.health -= 100;
+        }
+
     }
 }
