@@ -16,10 +16,10 @@ namespace HealthModuleMod
                 extrahealth = 50f;
             }
             __instance.GetComponent<Player>().liveMixin.data.maxHealth = 100f + extrahealth;
-            __instance.GetComponent<Player>().liveMixin.health = 100F * 0f;
+            //__instance.GetComponent<Player>().liveMixin.health = 100F * 0f;
 
-            //__instance.food = HCPSettings.Instance.FoodStart;
-            //__instance.water = HCPSettings.Instance.WaterStart;
+            __instance.food = 100f;
+            __instance.water = 100f;
 
             return false;
         }

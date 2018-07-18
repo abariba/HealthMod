@@ -21,10 +21,11 @@ namespace HealthModuleMod
     class AddHealthModule
     {
         public static TechType FlatHealthModule = TechTypeHandler.AddTechType("FHM", "Subdurmal Body Armor", "this is a subdurmal body armor upgrade.", SpriteManager.Get(TechType.FirstAidKit));
+        
 
-
-        public static void patch()
+        public static void Patch()
         {
+            Console.WriteLine("[healthchip]harmony started initaializing");
             CraftDataHandler.SetEquipmentType(FlatHealthModule, EquipmentType.Chip);
             Console.WriteLine("[healthchip] Initialized");
             var harmony = HarmonyInstance.Create("abariba.HealthModuleMod");

@@ -6,6 +6,6 @@
   "Requires": [],
   "Enable": true,
   "AssemblyName": "HealthModuleMod.dll",
-  "EntryMethod": "HealthModuleMod.QPatch.Patch",
+  "EntryMethod": "HealthModuleMod.AddHealthModule.Patch",
   "Config": {}
 }
