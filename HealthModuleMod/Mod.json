@@ -1,0 +1,11 @@
+{
+  "Id": "HealthModuleMod",
+  "DisplayName": "HealthModuleMod",
+  "Author": "abariba using PrimeSonic his code from Vmod",
+  "Version": "1.0.0",
+  "Requires": [],
+  "Enable": true,
+  "AssemblyName": "HealthModuleMod.dll",
+  "EntryMethod": "HealthModuleMod.QPatch.Patch",
+  "Config": {}
+}
