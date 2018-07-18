@@ -3,15 +3,6 @@
 namespace HealthModuleMod
 {
 
-
-
-
-
-
-
-
-
-
     [HarmonyPatch(typeof(Player))]//Surivial
     [HarmonyPatch("EquipmentChanged")]
     class CheckIfChipEquipped

@@ -20,7 +20,7 @@ namespace HealthModuleMod
     //using UnityEngine;
     class AddHealthModule
     {
-        public static TechType FlatHealthModule = TechTypeHandler.AddTechType("FHM", "Subdurmal Body Armor", "this is a subdurmal body armor upgrade.", SpriteManager.Get(TechType.FirstAidKit),true);
+        public static TechType FlatHealthModule = TechTypeHandler.AddTechType("FlatHealthModule", "Subdurmal Body protection", "this Module makes the user more healthy so more attacks can be taken without them being lethal. Module Stacks", ImageUtils.LoadSpriteFromFile(@"./QMods/HealthModuleMod/Assets/FlatHealthModule.png"), true);
         
 
         public static void Patch()
@@ -51,6 +51,9 @@ namespace HealthModuleMod
             var harmony = HarmonyInstance.Create("abariba.HealthModuleMod");
             harmony.PatchAll(Assembly.GetExecutingAssembly());
             Console.WriteLine("[healthchip]harmony Initialized");
+            Console.WriteLine("[MissingietemsFabricator]chaos ensues");
+            HealthModuleMod.HealthFabricatorModule.Patch();
+            Console.WriteLine("[MissingietemsFabricator]chaos complete.");
         }
     }
 }
