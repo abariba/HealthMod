@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="MaxhealthModefier.cs" />
+    <Compile Include="ModifyPlayerClass.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

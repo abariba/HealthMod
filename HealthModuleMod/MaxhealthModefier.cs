@@ -4,7 +4,7 @@ namespace HealthModuleMod
 {
     [HarmonyPatch(typeof(Survival))]//Surivial
     [HarmonyPatch("Reset")]
-    class Survival_Reset_Patch
+    class AddMaxhealth
     {
         public static bool Prefix(Survival __instance)
         {
