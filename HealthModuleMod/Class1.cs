@@ -7,5 +7,6 @@ namespace HealthModuleMod
 {
     public class Class1
     {
+        e
     }
 }
